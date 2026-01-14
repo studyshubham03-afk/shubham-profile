@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Chaturvedi | Business & Finance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;
+            --charcoal: #333333;
+            --white: #ffffff;
+            --light-grey: #f4f4f4;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--white);
+        }
+        header {
+            padding: 80px 20px;
+            background: var(--white);
+            border-bottom: 1px solid #eee;
+        }
+        .container { max-width: 900px; margin: auto; padding: 0 20px; }
+        h1 { font-size: 2.5rem; color: var(--navy); margin-bottom: 10px; }
+        .descriptor { font-weight: 600; color: #666; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem; }
+        section { padding: 60px 0; border-bottom: 1px solid #f0f0f0; }
+        h2 { font-size: 1.5rem; color: var(--navy); border-left: 4px solid var(--navy); padding-left: 15px; margin-bottom: 30px; }
+        .exp-item, .edu-item { margin-bottom: 30px; }
+        .date { color: #888; font-size: 0.85rem; }
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .skill-cat h3 { font-size: 1rem; margin-bottom: 10px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 2px;
+            margin-top: 20px;
+        }
+        form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; }
+        input, textarea { padding: 12px; border: 1px solid #ddd; font-family: inherit; }
+        footer { padding: 40px; text-align: center; font-size: 0.8rem; color: #999; }
+        
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <p class="descriptor">Chartered Accountancy Finalist | Business & Finance</p>
+        <h1>Shubham Chaturvedi</h1>
+        <p>Finance and business professional with rigorous academic training and hands-on exposure to accounting, audit, taxation, and financial analysis. Experienced in structured problem-solving and data-driven decision support.</p>
+        <a href="#" class="btn">Download Professional Profile (PDF)</a>
+    </div>
+</header>
+
+<div class="container">
+    <section id="about">
+        <h2>About</h2>
+        <p>CA Final candidate with a B.Com in Accounting & Finance. Proven track record during articleship at VCA & Associates, with deep exposure to audit, taxation, and financial forecasting. Recognized for early leadership as Head Boy and Sports Captain, bringing a disciplined approach to business analysis and decision-making.</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="exp-item">
+            <strong>Article Trainee — VCA & Associates</strong>
+            <div class="date">Aug 2023 – Present | Vadodara, India</div>
+            <ul>
+                <li>Analyzed and restated financial statements to improve accuracy and regulatory compliance.</li>
+                <li>Assisted in financial forecasting and analytical reviews for client decision support.</li>
+                <li>Supported audit and taxation engagements across multiple industries.</li>
+                <li>Worked closely with senior professionals on client-facing deliverables.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-cat">
+                <h3>Financial & Technical</h3>
+                <ul>
+                    <li>Financial Analysis & Forecasting</li>
+                    <li>Accounting, Audit & Taxation</li>
+                    <li>Risk Assessment</li>
+                </ul>
+            </div>
+            <div class="skill-cat">
+                <h3>Analytical Tools</h3>
+                <ul>
+                    <li>Structured Problem Solving</li>
+                    <li>Advanced Microsoft Excel</li>
+                    <li>Professional PowerPoint Decks</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Inquiries</h2>
+        <p>For professional inquiries or collaboration, please reach out via the form below.</p>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn" style="border:none; cursor:pointer;">Send Message</button>
+        </form>
+        <div id="status" style="margin-top:10px;"></div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Shubham Chaturvedi | Vadodara, Gujarat, India</p>
+</footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // TODO: REPLACE THIS BLOCK WITH YOUR ACTUAL CONFIG FROM FIREBASE CONSOLE
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Handle Form Submission
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = document.getElementById('status');
+    status.innerText = "Sending...";
+    
+    try {
+      await addDoc(collection(db, "contacts"), {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value,
+        timestamp: new Date()
+      });
+      status.innerText = "Message sent successfully.";
+      document.getElementById('contactForm').reset();
+    } catch (error) {
+      status.innerText = "Error: " + error.message;
+    }
+  });
+</script>
+
+</body>
+</html>
